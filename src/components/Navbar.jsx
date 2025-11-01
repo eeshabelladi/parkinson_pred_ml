@@ -34,8 +34,8 @@ const Navbar = ({ isAuthenticated, userEmail, onLoginClick, onSignupClick, onLog
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => scrollToSection('home')}
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-primary via-purple-600 to-teal-500 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/30">
-              <Brain className="w-6 h-6 text-white" strokeWidth={2.5} />
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 via-purple-600 to-teal-500 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/30">
+              <Brain className="w-6 h-6 text-white" strokeWidth={3} style={{ filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.2))' }} />
             </div>
             <span className="text-xl md:text-2xl font-bold text-[#1E293B]">
               NeuroPredict

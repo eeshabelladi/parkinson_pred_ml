@@ -51,7 +51,7 @@ const Hero = () => {
           <div className="fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1E293B] leading-tight mb-6">
               Detect Parkinson's Early with{' '}
-              <span className="bg-gradient-to-r from-primary via-purple-600 to-teal-500 bg-clip-text text-transparent">AI</span>
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-teal-500 bg-clip-text text-transparent font-extrabold" style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>AI</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
               Upload handwriting or voice samples and get quick predictions
