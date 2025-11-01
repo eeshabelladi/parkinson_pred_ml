@@ -93,7 +93,7 @@ const UploadSection = ({ onAnalyze, isAnalyzing }) => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1E293B] mb-4">
             Upload Your Samples
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-4">
             Upload handwriting and/or voice samples for accurate AI prediction
           </p>
         </div>
@@ -260,6 +260,13 @@ const UploadSection = ({ onAnalyze, isAnalyzing }) => {
               <span className="relative z-10">Analyze Now</span>
             )}
           </button>
+        </div>
+        
+        {/* Subtle Disclaimer */}
+        <div className="mt-8 text-left">
+          <p className="text-xs text-gray-500">
+            <span className="text-red-600 font-medium">Important:</span> This is not a diagnostic tool. Please consult healthcare professionals for medical diagnosis.
+          </p>
         </div>
       </div>
     </section>

@@ -75,11 +75,9 @@ const ResultSection = ({ result, onReset, onViewHistory }) => {
                   </p>
                 </div>
 
-                <div className="bg-white rounded-lg p-6 mb-8 text-left">
-                  <p className="text-sm text-gray-600 mb-2">
-                    <strong>Note:</strong> This is a prediction based on AI analysis and should not
-                    replace professional medical diagnosis. Please consult with a healthcare provider
-                    for accurate diagnosis and treatment.
+                <div className="mb-6 pt-4 border-t border-gray-200">
+                  <p className="text-xs text-gray-500 text-left">
+                    <span className="text-red-600 font-medium">Important:</span> This is not a diagnostic tool. This prediction is based on AI analysis and should not replace professional medical diagnosis. Please consult with healthcare professionals for accurate diagnosis and treatment decisions.
                   </p>
                 </div>
               </>
