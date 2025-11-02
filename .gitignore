@@ -34,3 +34,10 @@ yarn-error.log*
 # Vite
 .vite/
 
+venv/
+__pycache__/
+*.pyc
+*.keras
+*.h5
+*.png
+.DS_Store

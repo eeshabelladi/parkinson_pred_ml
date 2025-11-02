@@ -44,40 +44,34 @@ function App() {
 
   const handleAnalysis = async (handwritingFile, voiceFile) => {
     setIsAnalyzing(true)
-    
-    // Placeholder for backend prediction API
-    // TODO: Replace with actual API endpoint
     try {
       const formData = new FormData()
       if (handwritingFile) formData.append('handwriting', handwritingFile)
-      if (voiceFile) formData.append('voice', voiceFile)
-
-      // Simulated API call - replace with actual endpoint
-      // const response = await fetch('/api/predict', {
-      //   method: 'POST',
-      //   body: formData
-      // })
-      // const data = await response.json()
-      
-      // Simulated delay and response for demo
-      await new Promise(resolve => setTimeout(resolve, 3000))
-      
-      // Mock response - replace with actual API response
-      const mockData = {
-        prediction: Math.random() > 0.5 ? 'Positive' : 'Negative',
-        confidence: Math.floor(Math.random() * 30) + 70, // 70-100%
+  
+      const response = await fetch('http://127.0.0.1:5000/api/predict', {
+        method: 'POST',
+        body: formData,
+      })
+  
+      const data = await response.json()
+      console.log("Response:", data)
+  
+      if (data.error) throw new Error(data.error)
+  
+      const result = {
+        prediction: data.prediction === 'parkinson' ? 'Positive' : 'Negative',
+        confidence: data.confidence,
         handwritingFile: handwritingFile ? handwritingFile.name : null,
         voiceFile: voiceFile ? voiceFile.name : null,
         date: new Date().toLocaleString(),
       }
-      
-      setPredictionResult(mockData)
-
-      // Save to records if user is authenticated
+  
+      setPredictionResult(result)
+  
       if (isAuthenticated && userEmail) {
         const savedRecords = localStorage.getItem(`records_${userEmail}`)
         const records = savedRecords ? JSON.parse(savedRecords) : []
-        records.unshift(mockData) // Add to beginning
+        records.unshift(result)
         localStorage.setItem(`records_${userEmail}`, JSON.stringify(records))
       }
     } catch (error) {
@@ -91,6 +85,7 @@ function App() {
       setIsAnalyzing(false)
     }
   }
+  
 
   const handleReset = () => {
     setPredictionResult(null)

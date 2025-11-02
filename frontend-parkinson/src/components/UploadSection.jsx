@@ -66,28 +66,28 @@ const UploadSection = ({ onAnalyze, isAnalyzing }) => {
       alert('Please upload at least one file (handwriting or voice)')
       return
     }
+
+    // ✅ Make sure the file is passed correctly to backend
+    console.log('Sending for analysis:', {
+      handwriting: handwritingFile?.name,
+      voice: voiceFile?.name
+    })
+
     onAnalyze(handwritingFile, voiceFile)
   }
 
   const removeFile = (type) => {
     if (type === 'handwriting') {
       setHandwritingFile(null)
-      if (handwritingInputRef.current) {
-        handwritingInputRef.current.value = ''
-      }
+      if (handwritingInputRef.current) handwritingInputRef.current.value = ''
     } else {
       setVoiceFile(null)
-      if (voiceInputRef.current) {
-        voiceInputRef.current.value = ''
-      }
+      if (voiceInputRef.current) voiceInputRef.current.value = ''
     }
   }
 
   return (
-    <section
-      id="upload"
-      className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#F9FAFB]"
-    >
+    <section id="upload" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#F9FAFB]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1E293B] mb-4">
@@ -101,7 +101,7 @@ const UploadSection = ({ onAnalyze, isAnalyzing }) => {
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* Handwriting Upload Box */}
           <div
-                className={`border-2 border-dashed rounded-2xl p-8 transition-all duration-300 ${
+            className={`border-2 border-dashed rounded-2xl p-8 transition-all duration-300 ${
               handwritingDragActive
                 ? 'border-primary bg-primary/5'
                 : 'border-gray-300 hover:border-primary/50 bg-white'
@@ -240,14 +240,7 @@ const UploadSection = ({ onAnalyze, isAnalyzing }) => {
                   fill="none"
                   viewBox="0 0 24 24"
                 >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path
                     className="opacity-75"
                     fill="currentColor"
@@ -261,8 +254,7 @@ const UploadSection = ({ onAnalyze, isAnalyzing }) => {
             )}
           </button>
         </div>
-        
-        {/* Subtle Disclaimer */}
+
         <div className="mt-8 text-left">
           <p className="text-xs text-gray-500">
             <span className="text-red-600 font-medium">Important:</span> This is not a diagnostic tool. Please consult healthcare professionals for medical diagnosis.
@@ -274,4 +266,3 @@ const UploadSection = ({ onAnalyze, isAnalyzing }) => {
 }
 
 export default UploadSection
-
